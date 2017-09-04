@@ -1,49 +1,11 @@
 from flask import Flask, request,jsonify, json, Response
 
+import config, data
+
 app = Flask(__name__)
 
-
-# just to add basic testing variables
-example_text = {
-    "text": "Would you like to play a game?",
-    "attachments": [
-        {
-            "text": "Choose a game to play",
-            "fallback": "You are unable to choose a game",
-            "callback_id": "wopr_game",
-            "color": "#3AA3E3",
-            "attachment_type": "default",
-            "actions": [
-                {
-                    "name": "game",
-                    "text": "Chess",
-                    "type": "button",
-                    "value": "chess"
-                },
-                {
-                    "name": "game",
-                    "text": "Falken's Maze",
-                    "type": "button",
-                    "value": "maze"
-                	},
-                {
-                    "name": "game",
-                    "text": "Thermonuclear War",
-                    "style": "danger",
-                    "type": "button",
-                    "value": "war",
-                    "confirm": {
-                        "title": "Are you sure?",
-                        "text": "Wouldn't you prefer a good game of chess?",
-                        "ok_text": "Yes",
-                        "dismiss_text": "No"
-                    }
-                }
-            ]
-        }
-    ]
-}
-
+client_id = config.CLIENT_ID
+client_secret = config.CLIENT_SECRET
 
 @app.errorhandler(500)
 def page_not_found(error):
@@ -58,9 +20,13 @@ def auth_route():
 	r = requests.get(url, pay)
 	return 'that works'
 
+@app.route("/test_endpoint", methods = ["POST"])
+def test_endpoint():
+    return 'this is a test endpoint'
+
 @app.route("/standard_message", methods = ['POST'])
 def test_route():
-	return jsonify(example_text)
+	return jsonify(data.example_text)
 
 @app.route("/output", methods = ['POST'])
 def output_route():
@@ -78,15 +44,7 @@ def output_route():
     else:
         message_text = ":horse:"
 
-    response = slack_client.api_call(
-      "chat.update",
-      channel=form_json["channel"]["id"],
-      ts=form_json["message_ts"],
-      text=message_text,
-      attachments=[]
-    )
-
-    return make_response("", 200)
+    return Response(message_text)
 
 
 if __name__ == '__main__':
