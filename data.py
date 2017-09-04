@@ -1,6 +1,6 @@
 # loading info for buttons
 example_text = {
-    "text": "Would you like to play a game?",
+    "text": "Would you like a game?",
     "attachments": [
         {
             "text": "What would you like to do?",
