@@ -1,5 +1,5 @@
 # loading info for buttons
-example_text = {
+button_text = {
     "text": "Would you like a game?",
     "attachments": [
         {
@@ -38,3 +38,11 @@ example_text = {
         }
     ]
 }
+
+attachment_text = {
+        "attachments": [{
+            "text": "This is an example with warning text",
+            "color": "#36a64f",
+            "mrkdwn": True
+        }]
+    }

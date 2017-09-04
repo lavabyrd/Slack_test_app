@@ -7,9 +7,17 @@ app = Flask(__name__)
 client_id = config.CLIENT_ID
 client_secret = config.CLIENT_SECRET
 
-@app.errorhandler(500)
+button_link ='<a href="https://slack.com/oauth/authorize?client_id=' + client_id + '&scope=commands,channels:write">'
+button_image = '<img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>'
+
+@app.route("/install")
+def add_to_slack():
+    return Response(button_link + button_image)
+
+
+@app.errorhandler(404)
 def page_not_found(error):
-    return 'This page does not exist', 500
+    return 'This page does not exist', 404
 
 
 @app.route("/oauth")
@@ -22,11 +30,15 @@ def auth_route():
 
 @app.route("/test_endpoint", methods = ["POST"])
 def test_endpoint():
-    return 'this is a test endpoint'
+    return "This is just to test everything is working"
+
+@app.route("/attachment_route", methods = ["POST"])
+def attach_text():
+    return jsonify(data.attachment_text)
 
 @app.route("/standard_message", methods = ['POST'])
 def test_route():
-	return jsonify(data.example_text)
+	return jsonify(data.button_text)
 
 @app.route("/output", methods = ['POST'])
 def output_route():
