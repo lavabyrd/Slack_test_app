@@ -9,8 +9,8 @@ app = Flask(__name__)
 # client_secret = config.CLIENT_SECRET
 
 # demo data
-client_id = "11111"
-client_secret = "22222"
+client_id = os.environ.get('client_id')
+client_secret = os.environ.get('client_secret')
 
 button_link ='<a href="https://slack.com/oauth/authorize?client_id=' + client_id + '&scope=commands,channels:write">'
 button_image = '<img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>'
