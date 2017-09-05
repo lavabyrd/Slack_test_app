@@ -63,7 +63,7 @@ def output_route():
 
     return Response(message_text)
 
-@app.route("/phone_number_test")
+@app.route("/phone_number_test", methods = ['POST'])
 def pnt():
     return "<tel:+1234-5555">
 
