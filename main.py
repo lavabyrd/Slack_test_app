@@ -24,6 +24,10 @@ def index():
 def page_not_found(error):
     return 'This page does not exist', 404
 
+@app.errorhandler(503)
+def error_503_page(error):
+    return 'This is the 503 page', 503
+
 
 @app.route("/oauth")
 def auth_route():
@@ -55,7 +59,16 @@ def output_route():
     # Check to see what the user's selection was and update the message
     selection = form_json["actions"][0]["value"]
     
+    selection_output(selection)    
 
+    # if selection == "war":
+    #     message_text = "The only winning move is not to play.\nHow about a nice game of chess?"
+    # else:
+    #     message_text = ":horse:"
+
+    # return Response(message_text)
+
+def selection_output(selection):
     if selection == "war":
         message_text = "The only winning move is not to play.\nHow about a nice game of chess?"
     else:
@@ -63,12 +76,8 @@ def output_route():
 
     return Response(message_text)
 
-@app.route("/phone_number_test", methods = ['POST'])
-def pnt():
-    return "<tel:+1234-5555>"
+
 
 if __name__ == '__main__':
-    # app.run(port=4390)
-    port = int(os.environ.get('PORT', 5000))
-    
-    app.run(host='0.0.0.0',port=port)
+    # port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0',port=int(os.environ.get('PORT', 5000))
