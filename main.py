@@ -5,10 +5,6 @@ import data, os
 
 app = Flask(__name__)
 
-# client_id = config.CLIENT_ID
-# client_secret = config.CLIENT_SECRET
-
-# demo data
 client_id = os.environ.get('client_id')
 client_secret = os.environ.get('client_secret')
 
@@ -67,6 +63,9 @@ def output_route():
 
     return Response(message_text)
 
+@app.route("/phone_number_test")
+def pnt():
+    return "<tel:+1234-5555">
 
 if __name__ == '__main__':
     # app.run(port=4390)
