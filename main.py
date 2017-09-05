@@ -1,7 +1,7 @@
 from flask import Flask, request,jsonify, json, Response
 
 # import config
-import data
+import data, os
 
 app = Flask(__name__)
 
