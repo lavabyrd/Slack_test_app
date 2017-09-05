@@ -18,7 +18,7 @@ def add_to_slack():
 
 @app.route("/")
 def index():
-    return 'Does this work?'
+    return 'Homepage'
 
 @app.errorhandler(404)
 def page_not_found(error):
@@ -52,21 +52,14 @@ def test_route():
 @app.route("/output", methods = ['POST'])
 def output_route():
 
-	    # Parse the request payload
+	# Parse the request payload
     form_json = json.loads(request.form["payload"])
     
 
     # Check to see what the user's selection was and update the message
     selection = form_json["actions"][0]["value"]
     
-    selection_output(selection)    
-
-    # if selection == "war":
-    #     message_text = "The only winning move is not to play.\nHow about a nice game of chess?"
-    # else:
-    #     message_text = ":horse:"
-
-    # return Response(message_text)
+    return selection_output(selection)
 
 def selection_output(selection):
     if selection == "war":
