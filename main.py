@@ -20,6 +20,10 @@ def add_to_slack():
     return Response(button_link + button_image)
 
 
+@app.route("/")
+def index():
+    return 'Does this work?'
+
 @app.errorhandler(404)
 def page_not_found(error):
     return 'This page does not exist', 404
