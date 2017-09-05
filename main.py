@@ -20,6 +20,10 @@ def add_to_slack():
 def index():
     return 'Homepage'
 
+@app.route("/app_link")
+def app_link():
+    return 'https://python-slack-app.herokuapp.com'
+
 # Error handling
 @app.errorhandler(404)
 def page_not_found(error):
@@ -68,6 +72,8 @@ def selection_output(selection):
         message_text = ":horse:"
 
     return Response(message_text)
+
+
 
 
 # App startup
