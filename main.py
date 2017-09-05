@@ -65,7 +65,7 @@ def output_route():
 
 @app.route("/phone_number_test", methods = ['POST'])
 def pnt():
-    return "<tel:+1234-5555">
+    return "<tel:+1234-5555>"
 
 if __name__ == '__main__':
     # app.run(port=4390)
