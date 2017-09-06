@@ -40,7 +40,7 @@ def auth_route():
 	code = request.args.get("code")
 	pay = {'code': code, 'client_id':CLIENT_ID, 'client_secret': CLIENT_SECRET}
 	r = requests.get(url, pay)
-	return 'that works'
+	return 'that works ' + code
 
 # Endpoint with basic response
 @app.route("/test_endpoint", methods = ["POST"])
