@@ -2,6 +2,7 @@ from flask import Flask, request,jsonify, json, Response
 
 import data, os
 
+# Master branch
 app = Flask(__name__)
 
 client_id = os.environ.get('client_id')
@@ -40,7 +41,7 @@ def auth_route():
 	code = request.args.get("code")
 	pay = {'code': code, 'client_id':CLIENT_ID, 'client_secret': CLIENT_SECRET}
 	r = requests.get(url, pay)
-	return 'that works ' + code
+	return 'that works'
 
 # Endpoint with basic response
 @app.route("/test_endpoint", methods = ["POST"])
