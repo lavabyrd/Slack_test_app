@@ -1,9 +1,11 @@
-from flask import Flask, request,jsonify, json, Response
+from flask import Flask, request,jsonify, json, Response, render_template
 
 import data, os
+from flask_bootstrap import Bootstrap
+# bootstrap branch
 
-# Master branch
 app = Flask(__name__)
+Bootstrap(app)
 
 client_id = os.environ.get('client_id')
 client_secret = os.environ.get('client_secret')
@@ -19,7 +21,7 @@ def add_to_slack():
 # Just a base homepage to show it working without using Slack
 @app.route("/")
 def index():
-    return 'Homepage'
+    return render_template('index2.html')
 
 @app.route("/app_link")
 def app_link():
@@ -80,4 +82,5 @@ def selection_output(selection):
 # App startup
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0',port=port)
+
+    app.run(debug=True,host='0.0.0.0',port=port)
