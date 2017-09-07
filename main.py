@@ -25,7 +25,7 @@ def index():
 def app_link():
     return 'https://python-slack-app.herokuapp.com'
 
-# Error handling
+# Error handling for 404 and 503
 @app.errorhandler(404)
 def page_not_found(error):
     return 'This page does not exist', 404
