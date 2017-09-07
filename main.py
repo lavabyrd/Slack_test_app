@@ -2,7 +2,7 @@ from flask import Flask, request,jsonify, json, Response, render_template
 
 import data, os
 from flask_bootstrap import Bootstrap
-# bootstrap branch
+# Master branch
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -10,13 +10,10 @@ Bootstrap(app)
 client_id = os.environ.get('client_id')
 client_secret = os.environ.get('client_secret')
 
-button_link ='<a href="https://slack.com/oauth/authorize?client_id=' + client_id + '&scope=commands,channels:write">'
-button_image = '<img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>'
-
 # This is for allowing the installation of the app to a team
 @app.route("/install")
 def add_to_slack():
-    return Response(button_link + button_image)
+    return render_template('install.html', client_id=client_id)
 
 # Just a base homepage to show it working without using Slack
 @app.route("/")
@@ -83,4 +80,4 @@ def selection_output(selection):
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
 
-    app.run(debug=True,host='0.0.0.0',port=port)
+    app.run(host='0.0.0.0',port=port)
