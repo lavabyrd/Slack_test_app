@@ -20,7 +20,7 @@ def add_to_slack():
 def index():
     return render_template('index2.html')
 
-@app.route("/app_link")
+@app.route("/app_link", methods = ['POST'])
 def app_link():
     return 'https://python-slack-app.herokuapp.com'
 
