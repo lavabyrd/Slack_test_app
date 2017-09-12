@@ -23,7 +23,7 @@ button_text = {
                 },
                 {
                     "name": "game",
-                    "text": "thumbsup",
+                    "text": ":thumbsup:",
                     "type": "button",
                     "value": "blah"
                 },
