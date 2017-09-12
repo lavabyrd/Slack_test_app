@@ -20,7 +20,13 @@ button_text = {
                     "text": "Falken's Maze",
                     "type": "button",
                     "value": "maze"
-                	},
+                },
+                {
+                    "name": "game",
+                    "text": "thumbsup",
+                    "type": "button",
+                    "value": "blah"
+                },
                 {
                     "name": "game",
                     "text": "Thermonuclear War",
