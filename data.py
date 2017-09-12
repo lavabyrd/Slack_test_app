@@ -41,7 +41,7 @@ button_text = {
 
 attachment_text = {
         "attachments": [{
-            "text": "This is an example with warning text",
+            "text": "This is an example with warning text with a :thumbsup:",
             "color": "#36a64f",
             "mrkdwn": True
         }]
