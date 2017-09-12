@@ -52,7 +52,7 @@ def auth_route():
 # Endpoint with basic response
 @app.route("/test_endpoint", methods=["POST"])
 def test_endpoint():
-    return "This is just to test everything is working"
+    return ":thumbsup:"
 
 
 # Endpoint that returns a basic formatted message from data.py
