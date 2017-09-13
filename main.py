@@ -54,10 +54,11 @@ def auth_route():
 def test_endpoint():
     # user = request.args.get("user")
     multi_dict = request.args
+    print ("testing output")
     for key in multi_dict:
         return multi_dict.get(key)
         # print (multi_dict.getlist(key))
-    return multi_dict
+    return "This should work"
 
 
 # Endpoint that returns a basic formatted message from data.py
