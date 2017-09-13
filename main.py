@@ -14,7 +14,6 @@ client_secret = os.environ.get('client_secret')
 # This is for allowing the installation of the app to a team
 @app.route("/install")
 def add_to_slack():
-    print("What about this")
     return render_template('install.html', client_id=client_id)
 
 
@@ -54,11 +53,9 @@ def auth_route():
 @app.route("/test_endpoint", methods=["POST"])
 def test_endpoint():
     # user = request.args.get("user")
-    # multi_dict = request.args
-    print ("testing output")
-    # for key in multi_dict:
-    #     return multi_dict.get(key)
-          # print (multi_dict.getlist(key))
+    multi_dict = request.args
+    for key in multi_dict:
+        print (multi_dict.getlist(key))
     return "This should work"
 
 
