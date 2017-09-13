@@ -52,9 +52,14 @@ def auth_route():
 # Endpoint with basic response
 @app.route("/test_endpoint", methods=["POST"])
 def test_endpoint():
-    user = request.args.get()
-    print(user)
-    return user
+    # user = request.args.get("user")
+    multi_dict = request.args
+    for key in multi_dict:
+        print
+        multi_dict.get(key)
+        print
+        multi_dict.getlist(key)
+    return "this worked"
 
 
 # Endpoint that returns a basic formatted message from data.py
