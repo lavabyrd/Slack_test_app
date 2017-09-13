@@ -53,9 +53,7 @@ def auth_route():
 @app.route("/test_endpoint", methods=["POST"])
 def test_endpoint():
     # user = request.args.get("user")
-    multi_dict = request.args
-    for key in multi_dict:
-        print (multi_dict.getlist(key))
+    print(request.args)
     return "This should work"
 
 
