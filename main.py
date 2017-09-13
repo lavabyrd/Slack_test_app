@@ -14,6 +14,7 @@ client_secret = os.environ.get('client_secret')
 # This is for allowing the installation of the app to a team
 @app.route("/install")
 def add_to_slack():
+    print("What about this")
     return render_template('install.html', client_id=client_id)
 
 
