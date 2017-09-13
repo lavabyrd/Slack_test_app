@@ -57,7 +57,7 @@ def test_endpoint():
     for key in multi_dict:
         return multi_dict.get(key)
         # print (multi_dict.getlist(key))
-    # return "this worked"
+    return multi_dict
 
 
 # Endpoint that returns a basic formatted message from data.py
