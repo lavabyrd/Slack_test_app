@@ -53,7 +53,8 @@ def auth_route():
 @app.route("/test_endpoint", methods=["POST"])
 def test_endpoint():
     # user = request.args.get("user")
-    print(request.args)
+    slack_event = json.loads(request.data)
+    print(slack_event)
     return "This should work"
 
 
