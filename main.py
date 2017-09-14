@@ -52,7 +52,8 @@ def auth_route():
 # Endpoint with basic response
 @app.route("/test_endpoint", methods=["POST"])
 def test_endpoint():
-    print(request.get_json())
+    # print(request.get_json())
+    print(request.form)
     return "This should work"
 
 
