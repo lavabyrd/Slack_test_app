@@ -52,7 +52,7 @@ def auth_route():
 # Endpoint with basic response
 @app.route("/test_endpoint", methods=["POST"])
 def test_endpoint():
-    print(request.data)
+    print(request.get_json())
     return "This should work"
 
 
