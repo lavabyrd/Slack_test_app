@@ -53,8 +53,18 @@ def auth_route():
 @app.route("/test_endpoint", methods=["POST"])
 def test_endpoint():
     # print(request.get_json())
-    print(request.form)
+    print(request.__dict__)
+    # print(request.form)
     return "This should work"
+
+
+# Endpoint for easier ngrok testing
+@app.route("/test_endpoint2", methods=["POST"])
+def test_endpoint2():
+    out = json.dumps(request.form)
+    print (out)
+
+    return out
 
 
 # Endpoint that returns a basic formatted message from data.py
@@ -91,4 +101,4 @@ def selection_output(selection):
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
 
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug=True,host='0.0.0.0', port=port)
