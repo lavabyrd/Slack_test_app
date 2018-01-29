@@ -52,3 +52,35 @@ attachment_text = {
             "mrkdwn": True
         }]
     }
+
+dialog={
+                "title": "Request a coffee",
+                "submit_label": "Submit",
+                "callback_id": "coffee_order_form",
+                "elements": [
+                    {
+                        "label": "Coffee Type",
+                        "type": "select",
+                        "name": "meal_preferences",
+                        "placeholder": "Select a drink",
+                        "options": [
+                            {
+                                "label": "Cappuccino",
+                                "value": "cappuccino"
+                            },
+                            {
+                                "label": "Latte",
+                                "value": "latte"
+                            },
+                            {
+                                "label": "Pour Over",
+                                "value": "pour_over"
+                            },
+                            {
+                                "label": "Cold Brew",
+                                "value": "cold_brew"
+                            }
+                        ]
+                    }
+                ]
+            }
