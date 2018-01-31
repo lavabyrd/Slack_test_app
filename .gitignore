@@ -1,5 +1,7 @@
 # personal config
 config.py
+newrelic.ini
+newrelic-python-agent.log
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
