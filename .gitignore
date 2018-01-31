@@ -2,6 +2,7 @@
 config.py
 newrelic.ini
 newrelic-python-agent.log
+venvpy3/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
