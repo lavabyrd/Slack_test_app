@@ -1,26 +1,30 @@
 from flask import Flask, request, jsonify, json, Response, render_template
-
-
-import data, os, requests
+# import data, 
+import os, requests
 from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
+
+from app import routes
 Bootstrap(app)
 
 client_id = os.environ.get('client_id')
 client_secret = os.environ.get('client_secret')
+
+@app.route("/event", methods=["POST"])
+def got_event():
+    # output = request.args.get("token")
+    out = request.get_json()
+    print(out)
+    # challenge = out['challenge']
+    # print("form is " + challenge)
+    return "good to go!"
 
 
 # This is for allowing the installation of the app to a team
 @app.route("/install")
 def add_to_slack():
     return render_template('install.html', client_id=client_id)
-
-
-# Just a base homepage to show it working without using Slack
-@app.route("/")
-def index():
-    return render_template('index.html')
 
 
 @app.route("/app_link", methods=['POST'])
