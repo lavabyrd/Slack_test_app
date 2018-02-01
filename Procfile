@@ -1,1 +1,1 @@
-web: python main.py -p $PORT
+web: python slackbot.py -p $PORT
