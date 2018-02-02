@@ -1,5 +1,5 @@
 import newrelic.agent
-newrelic.agent.initialize('config/newrelic.ini')
+newrelic.agent.initialize()
 
 from app import app
 import api
