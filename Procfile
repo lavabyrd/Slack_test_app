@@ -1,1 +1,1 @@
-web: python slackbot.py -p $PORT
+web: flask run -p $PORT
