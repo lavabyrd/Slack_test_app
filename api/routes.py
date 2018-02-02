@@ -6,6 +6,7 @@ import requests
 
 client_id = os.environ.get('client_id')
 client_secret = os.environ.get('client_secret')
+oauth_token = os.environ.get('SLACK_BOT_TOKEN')
 
 # Oauth verification endpoint, required to get the requester code and verify
 @app.route("/oauth")
@@ -30,8 +31,8 @@ def app_link():
 
 
 # Endpoint with basic response
-@app.route("/test_endpoint", methods=["POST"])
-def test_endpoint():
+@app.route("/basic_test_endpoint", methods=["POST"])
+def basic_test_endpoint():
     print(request.__dict__)
     return "This should work"
 
@@ -56,7 +57,7 @@ def attach_text():
 
 # Endpoint that returns some interactive buttons
 @app.route("/interactive_buttons", methods=['POST'])
-def test_route():
+def interaction_button_route():
     return jsonify(data.button_text)
 
 
