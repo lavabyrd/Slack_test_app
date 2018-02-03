@@ -10,13 +10,32 @@ client_secret = os.environ.get('client_secret')
 @app.route("/")
 @app.route("/index")
 def index():
-    return render_template('index.html')
-
+    user = {"username": "Mark"}
+    return render_template('index.html', title='Home', user=user)
 
 # This is for allowing the installation of the app to a team
 @app.route("/install")
 def add_to_slack():
-    return render_template('install.html', client_id=client_id)
+    return render_template('install.html', title='Slack App Install', client_id=client_id)
+
+@app.route('/posts')
+def posts():
+    user = {'username': 'Mark'}
+    posts = [
+        {
+            'author': {'username':'JJ'},
+            'body': 'Beautiful day in pdx'
+        },
+        {
+            'author': {'username': 'Darren'},
+            'body': 'Nice day in VC'
+        }
+    ]
+    return render_template('posts.html', title='Posts', user=user, posts=posts)
+
+
+
+
 
 ######################
 # Errors start here: #
