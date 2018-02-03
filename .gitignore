@@ -1,5 +1,4 @@
 # personal config
-config.py
 newrelic.ini
 newrelic-python-agent.log
 venvpy3/
