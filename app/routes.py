@@ -1,8 +1,10 @@
 from app import app
 
-from flask import Flask, request, jsonify, json, Response, render_template
+from flask import render_template, flash, redirect, url_for
 import requests
 import os
+from app.forms import LoginForm
+
 client_id = os.environ.get('client_id')
 client_secret = os.environ.get('client_secret')
 
@@ -17,6 +19,16 @@ def index():
 @app.route("/install")
 def add_to_slack():
     return render_template('install.html', title='Slack App Install', client_id=client_id)
+
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        flash('Login requested for user {}, remember_me={}'.format(
+            form.username.data, form.remember_me.data))
+        return redirect(url_for('index'))
+    return render_template('login.html', title='Sign In', form=form)
+
 
 @app.route('/posts')
 def posts():
