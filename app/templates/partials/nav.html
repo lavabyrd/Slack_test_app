@@ -17,10 +17,12 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="{{ url_for('add_to_slack') }}">Install page</a></li>
-            <li><a href="{{ url_for('posts') }}">Looping posts page</a></li>
             {% if current_user.is_anonymous %}
             <li><a href="{{ url_for('login') }}">Login</a></li>
             {% else %}
+            <li>
+              <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
+            </li>
             <li><a href="{{ url_for('logout') }}">Logout</a></li>
             {% endif %}
             <li><a href="#">Contact</a></li>
