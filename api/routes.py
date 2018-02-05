@@ -1,7 +1,8 @@
 from flask import request, jsonify, json, Response, Flask
-from app import app
+from app import app, db
 import os
 import requests
+from api.models import UserToken
 
 client_id = app.config['CLIENT_ID']
 client_secret = app.config['CLIENT_SECRET']
@@ -12,10 +13,24 @@ oauth_token = app.config['OAUTH_TOKEN']
 def auth_route():
     url = 'https://slack.com/api/oauth.access'
     code = request.args.get("code")
-    pay = {'code': code, 'client_id': client_id,
-           'client_secret': client_secret}
+    # this could all be refactored into another file
+    pay = {'code': code, 'client_id': '225895574304.309648708551',
+           'client_secret': 'cc56ba655f9e6bddd3545aa71bb126ab'}
     r = requests.get(url, pay)
-    return 'that works' + str
+    out = r.json()
+    # user = out['user_id']
+    # user_token = out['access_token']
+    # print('heres the token ' + user_token)
+    # bot_token = out['bot']['bot_access_token']
+    user_token_add = UserToken(
+        user_id=out['user_id'],  
+        bot_id=out['bot']['bot_user_id'],
+        user_token=out['access_token'],
+        bot_token=out['bot']['bot_access_token']
+        )    
+    db.session.add(user_token_add)
+    db.session.commit()
+    return 'Thanks for installing SlackBot Staging!'
 
 
 ##################
@@ -76,3 +91,4 @@ def selection_output(selection):
         message_text = ":horse:"
 
     return Response(message_text)
+ 
