@@ -1,12 +1,11 @@
 from flask import request, jsonify, json, Response, Flask
-# import the main app instance
 from app import app
 import os
 import requests
 
-client_id = os.environ.get('client_id')
-client_secret = os.environ.get('client_secret')
-oauth_token = os.environ.get('SLACK_BOT_TOKEN')
+client_id = app.config['CLIENT_ID']
+client_secret = app.config['CLIENT_SECRET']
+oauth_token = app.config['OAUTH_TOKEN']
 
 # Oauth verification endpoint, required to get the requester code and verify
 @app.route("/oauth")
@@ -16,7 +15,7 @@ def auth_route():
     pay = {'code': code, 'client_id': client_id,
            'client_secret': client_secret}
     r = requests.get(url, pay)
-    return 'that works'
+    return 'that works' + str
 
 
 ##################

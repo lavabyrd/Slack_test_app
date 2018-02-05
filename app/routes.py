@@ -1,4 +1,4 @@
-from app import app,db
+from app import app, db
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
@@ -7,8 +7,8 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm
 from datetime import datetime
 import os
 
-client_id = os.environ.get('client_id')
-client_secret = os.environ.get('client_secret')
+client_id = app.config['CLIENT_ID']
+client_secret = app.config['CLIENT_SECRET']
 
 @app.before_request
 def before_request():
