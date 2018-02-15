@@ -15,6 +15,7 @@ def auth_route():
     pay = {'code': code, 'client_id': client_id,
            'client_secret': client_secret}
     r = requests.get(url, pay)
+    print(r.text)
     return 'that works' + str
 
 
