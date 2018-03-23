@@ -10,11 +10,13 @@ import os
 client_id = app.config['CLIENT_ID']
 client_secret = app.config['CLIENT_SECRET']
 
+
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
+
 
 # Just a base homepage to show it working without using Slack
 @app.route("/")
@@ -25,9 +27,12 @@ def index():
     return render_template('index.html', title='Home', post=posts)
 
 # This is for allowing the installation of the app to a team
+
+
 @app.route("/install")
 def add_to_slack():
     return render_template('install.html', title='Slack App Install', client_id=client_id)
+
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -73,7 +78,7 @@ def posts():
     user = {'username': 'Mark'}
     posts = [
         {
-            'author': {'username':'JJ'},
+            'author': {'username': 'JJ'},
             'body': 'Beautiful day in pdx'
         },
         {
@@ -93,6 +98,7 @@ def user(username):
         {'author': user, 'body': 'Test post #2'}
     ]
     return render_template('user.html', user=user, posts=posts)
+
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
