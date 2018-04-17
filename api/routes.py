@@ -3,6 +3,7 @@ from app import app
 import os
 import requests
 
+
 client_id = app.config['CLIENT_ID']
 client_secret = app.config['CLIENT_SECRET']
 oauth_token = app.config['OAUTH_TOKEN']
@@ -42,12 +43,17 @@ def basic_test_endpoint():
 # Endpoint for events and challenge. Uncomment for verification url
 @app.route("/event", methods=["POST"])
 def got_event():
-    # output = request.args.get("token")
-    # challenge = out['challenge']
-    # print("form is " + challenge)
-    # return challenge
-    out = request.get_json()
-    print(out)
+    out2 = request.args.get("token")
+    out1 = request.get_json()
+    print(out1)
+    # print(out1['event']['text'])
+    # return out1['challenge']
+    # challenge = out1['challenge']
+    # print(request.get_json())
+
+    return "done"
+    # out = request.get_json()
+    # print(out)
     return "good to go!"
 
 
@@ -86,6 +92,11 @@ def selection_output(selection):
         message_text = ":horse:"
 
     return Response(message_text)
+
+
+@app.route("/dialog", methods=['POST'])
+def dialog_endpoint():
+    return "hi"
 
 
 button_text = {

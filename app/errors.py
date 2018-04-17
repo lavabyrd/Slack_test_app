@@ -4,7 +4,8 @@ from app import app, db
 
 @app.errorhandler(404)
 def not_found_error(error):
-    return render_template('404.html'), 404
+    return "try again"
+    # return render_template('404.html'), 404
 
 # Error handling 503
 
