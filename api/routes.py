@@ -41,20 +41,25 @@ def basic_test_endpoint():
 
 
 # Endpoint for events and challenge. Uncomment for verification url
-@app.route("/event", methods=["POST"])
+@app.route("/EVENT", methods=["POST"])
 def got_event():
     out2 = request.args.get("token")
     out1 = request.get_json()
     print(out1)
     # print(out1['event']['text'])
-    # return out1['challenge']
+
+    try:
+        return out1['challenge']
+
+    except:
+        return "ran"
     # challenge = out1['challenge']
     # print(request.get_json())
 
-    return "done"
+    # return "done"
     # out = request.get_json()
     # print(out)
-    return "good to go!"
+    # return "good to go!"
 
 
 # Endpoint that returns a basic formatted message from data.py
